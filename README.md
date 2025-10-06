@@ -33,7 +33,12 @@ Keresés és rendezés funkció hozzáadása (pl. név szerint).
 Szépíti a felületet ConstraintLayout-tal.
 Ő csinálja az UI-t, amit a felhasználó lát és kezel.
 
-Rafai Roland
+Rafai Roland 
+Kedvencek és adatbázis
+Ő felel a Room adatbázis beállításáért, vagyis az adatmentésért és az offline funkciókért.
+Megvalósítja, hogy a felhasználó hozzáadhasson országokat a kedvencekhez, és ezek megjelenjenek egy külön „Kedvencek” listában.
+Arra is ügyel, hogy az alkalmazás internet nélkül is működjön, vagyis az adatok elmentődjenek és visszatölthetők legyenek offline módban is.
+
 
 
 
