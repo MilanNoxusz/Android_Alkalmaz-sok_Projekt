@@ -26,7 +26,14 @@ Glide-dal megjeleníti a zászlókat.
 Ő felel az adatokért és a hálózati kapcsolatokért.
 
 Sári Bence
+Felhasználói felület és lista
+Megcsinálja a listanézetet (RecyclerView).
+Készít egy részletes nézetet, ahol látszanak az ország adatai.
+Keresés és rendezés funkció hozzáadása (pl. név szerint).
+Szépíti a felületet ConstraintLayout-tal.
+Ő csinálja az UI-t, amit a felhasználó lát és kezel.
 
+Rafai Roland
 
 
 
