@@ -17,6 +17,15 @@ Beállítja a képernyők közötti váltást
 Megcsinálja a fő képernyőt, menüsávot.
 
 
+Muskó Milán
+API és adatok
+Beállítja a REST Countries API-t (Retrofit-tel).
+Lekéri az európai országokat.
+Létrehozza a modelleket (ország neve, zászló, főváros, stb.).
+Glide-dal megjeleníti a zászlókat.
+Ő felel az adatokért és a hálózati kapcsolatokért.
+
+Sári Bence
 
 
 
