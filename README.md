@@ -1,9 +1,24 @@
-# Android_Alkalmaz-sok_Projekt
+# Android_Alkalmazasok_Projekt
 
 
-Forma 1
+Európa országai
 
-1.oldal
-Welcome és regisztráció, bejelentkezés kezdéssel.
+Alkalmazás funkciója
+Európa országairól olvashatunk információkat, statisztikákat, érdekességeket.
+A főoldalon megjelennek csempéken az országok neve, ez szűrhető különböző szempontok (régió, schengeni övezet része-e, stb.), illetve rendezhető különböző adatok (népesség, terület...) szerint. (Alapértelmezett: ABC növekvő, szűrés nélkül)
+Egy csempét kiválasztva megjelenik az ország "profilja", itt jelennek meg az adatok, itt adható a kedvencekhez.
+Szintén a főoldalon található egy kereső.
+Egyik sarokba helyet kap egy lenyitható menü, innen érhető el a kedvencek oldal, illetve a fejlesztők listája.
+Az alkalmazás egy adatbázisból kéri le az adatokat, a kedvenceket egy offline adatbázisba menti.
 
-Htéfőn megbeszélni hogy pontosan mit tudnánk csinálni
+Cs. Nagy Dániel
+Létrehozza a projektet Android Studio-ban.
+Beállítja a képernyők közötti váltást
+Megcsinálja a fő képernyőt, menüsávot.
+
+
+
+
+
+
+
