@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".MainActivity">
 
     <!-- AppBarLayout, amely a fejlécet tartalmazza -->
@@ -25,6 +26,7 @@
             android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
             app:title="Főoldal"
             app:titleTextColor="@color/white" />
+
 
     </com.google.android.material.appbar.AppBarLayout>
 
