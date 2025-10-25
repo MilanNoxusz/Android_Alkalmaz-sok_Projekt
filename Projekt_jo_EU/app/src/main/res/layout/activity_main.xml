@@ -28,25 +28,61 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- A tartalom helye a fejléc és a menüsáv között -->
-    <FrameLayout
-        android:id="@+id/fragment_container"
+    <!-- Keresőmező a szűréshez -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:iconifiedByDefault="false"
+        app:queryHint="Szűrés a listában..."
         app:layout_constraintTop_toBottomOf="@id/appbar"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ChipGroup a rendezési opciókhoz -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/sorting_chip_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:singleLine="true"
+        app:singleSelection="true"
+        app:layout_constraintTop_toBottomOf="@id/searchView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Ide jöhet a főoldal tényleges tartalma, pl. egy TextView -->
-        <TextView
+        <com.google.android.material.chip.Chip
+            android:id="@+id/sort_asc_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Főoldal Tartalma"
-            android:textSize="24sp" />
+            android:text="Növekvő"
+            android:checkable="true"
+            android:checked="true"/>
 
-    </FrameLayout>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/sort_desc_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Csökkenő"
+            android:checkable="true"/>
+    </com.google.android.material.chip.ChipGroup>
+
+    <!-- Lista megjelenítése RecyclerView segítségével -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/sorting_chip_group"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@android:layout/simple_list_item_2" />
 
     <!-- Alsó dummy menüsáv -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
