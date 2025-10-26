@@ -4,27 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:padding="16dp"
-    android:background="@android:color/white">
+    tools:layout_editor_absoluteX="-1dp"
+    tools:layout_editor_absoluteY="72dp">
 
     <ImageView
         android:id="@+id/country_flag_detail_image"
         android:layout_width="128dp"
         android:layout_height="128dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteY="104dp"
         tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/country_name_detail_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/country_flag_detail_image"
         tools:text="Ország Neve" />
@@ -33,7 +36,7 @@
         android:id="@+id/country_capital_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Főváros:"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -44,7 +47,7 @@
         android:id="@+id/country_capital_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@id/country_capital_label"
         app:layout_constraintStart_toEndOf="@id/country_capital_label"
@@ -54,7 +57,7 @@
         android:id="@+id/country_currency_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:text="Pénznem:"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -65,10 +68,26 @@
         android:id="@+id/country_currency_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@id/country_currency_label"
         app:layout_constraintStart_toEndOf="@id/country_currency_label"
         tools:text="Pénznem" />
+
+    <TextView
+        android:id="@+id/information_txtView"
+        android:layout_width="414dp"
+        android:layout_height="35dp"
+        android:background="#FCFCFD"
+        android:fontFamily="sans-serif-light"
+        android:text="Információ"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="#3F51B5"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
