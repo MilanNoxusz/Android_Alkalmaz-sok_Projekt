@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".MainActivity">
+
+    <!-- AppBarLayout, amely a fejlécet tartalmazza -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_dark"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        
+
+        <!-- Eszköztár (Toolbar) a fejlécen belül -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+            app:title="Főoldal"
+            app:titleCentered="true"
+            app:titleTextColor="@color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Keresőmező a szűréshez -->
+
+    <!-- ChipGroup a rendezési opciókhoz -->
+
+    <!-- Lista megjelenítése RecyclerView segítségével -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="731dp"
+        tools:listitem="@android:layout/simple_list_item_2" />
+
+    <!-- Alsó dummy menüsáv -->
+
+    <TextView
+        android:id="@+id/fooldal"
+        android:layout_width="412dp"
+        android:layout_height="48dp"
+        android:background="#3F51B5"
+        android:fontFamily="sans-serif-light"
+        android:text="Főoldal"
+        android:textAlignment="center"
+        android:textColor="#FBFBFB"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/favourite_btn"
+        android:layout_width="98dp"
+        android:layout_height="29dp"
+        android:background="#3F51B5"
+        android:fontFamily="sans-serif-light"
+        android:text="Kedvencek"
+        android:textAlignment="center"
+        android:textColor="#FDFCFC"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/statistict_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orszagok_btn"
+        app:layout_constraintVertical_bias="0.464" />
+
+    <Button
+        android:id="@+id/statistict_btn"
+        android:layout_width="98dp"
+        android:layout_height="29dp"
+        android:background="#3F51B5"
+        android:fontFamily="sans-serif-light"
+        android:text="Statisztika"
+        android:textAlignment="center"
+        android:textColor="#FDFCFC"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="441dp" />
+
+    <Button
+        android:id="@+id/orszagok_btn"
+        android:layout_width="98dp"
+        android:layout_height="29dp"
+        android:background="#3F51B5"
+        android:fontFamily="sans-serif-light"
+        android:text="Országok"
+        android:textAlignment="center"
+        android:textColor="#FDFCFC"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="269dp" />
+
+    <TextView
+        android:id="@+id/uzenet"
+        android:layout_width="214dp"
+        android:layout_height="97dp"
+        android:fontFamily="sans-serif-light"
+        android:text="Üdvözöljük az alkalmazásunkban!"
+        android:textAlignment="center"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/orszagok_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fooldal" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

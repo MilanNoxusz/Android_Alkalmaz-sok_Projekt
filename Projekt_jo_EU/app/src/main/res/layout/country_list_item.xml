@@ -29,4 +29,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Ország Neve" />
 
+    <TextView
+        android:id="@+id/country_name_text2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/country_flag_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Ország Neve" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
