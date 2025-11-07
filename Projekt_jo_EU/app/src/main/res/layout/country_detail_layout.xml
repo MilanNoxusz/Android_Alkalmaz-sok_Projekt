@@ -9,19 +9,6 @@
     tools:layout_editor_absoluteX="-1dp"
     tools:layout_editor_absoluteY="72dp">
 
-    <Button
-        android:id="@+id/back_btn3"
-        android:layout_width="222dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#3F51B5"
-        android:fontFamily="sans-serif-light"
-        android:text="Vissza"
-        android:textColor="#FDFCFC"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ImageView
         android:id="@+id/country_flag_detail_image"
         android:layout_width="128dp"
