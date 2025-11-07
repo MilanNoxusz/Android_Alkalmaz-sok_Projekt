@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
+    <Button
+        android:id="@+id/back_btn2"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#3F51B5"
+        android:fontFamily="sans-serif-light"
+        android:text="Vissza"
+        android:textColor="#FDFCFC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/random_info"
         android:layout_width="0dp"
@@ -49,7 +62,7 @@
         tools:text="MAGYARORSZÁG" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/Random_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"

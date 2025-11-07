@@ -79,9 +79,9 @@
         app:layout_constraintTop_toBottomOf="@+id/favorite_countries_label" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/back_btn5"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#3F51B5"
         android:fontFamily="sans-serif-light"
@@ -89,7 +89,6 @@
         android:textColor="#FDFCFC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favorites_progress" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

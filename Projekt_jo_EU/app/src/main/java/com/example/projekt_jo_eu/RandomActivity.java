@@ -12,7 +12,7 @@ public class RandomActivity extends AppCompatActivity {
         setContentView(R.layout.random_layout);
 
 
-        Button randomButton = findViewById(R.id.button2);
+        Button randomButton = findViewById(R.id.Random_btn);
         randomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
