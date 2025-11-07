@@ -12,7 +12,7 @@ public class StatisticsActivity extends AppCompatActivity {
         setContentView(R.layout.statistics_layout);
 
 
-        Button backButton = findViewById(R.id.button);
+        Button backButton = findViewById(R.id.back_button_statistics);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

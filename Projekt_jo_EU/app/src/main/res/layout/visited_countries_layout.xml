@@ -7,12 +7,11 @@
     android:background="@android:color/white">
 
     <Button
-        android:id="@+id/back_btn4"
-        android:layout_width="222dp"
-        android:layout_height="48dp"
+        android:id="@+id/back_button_visited"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#3F51B5"
-        android:fontFamily="sans-serif-light"
         android:text="Vissza"
         android:textColor="#FDFCFC"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,11 +35,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/visited_countries_recyclerView"
         android:layout_width="413dp"
-        android:layout_height="576dp"
+        android:layout_height="581dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/visited_countries_title"
         app:layout_constraintVertical_bias="0.0"

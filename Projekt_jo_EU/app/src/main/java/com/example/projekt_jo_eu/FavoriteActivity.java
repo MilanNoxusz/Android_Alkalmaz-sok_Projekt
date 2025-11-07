@@ -11,7 +11,9 @@ public class FavoriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favorite);
 
-        Button backButton = findViewById(R.id.back_btn);
+
+
+        Button backButton = findViewById(R.id.back_btn_favorite);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -19,4 +21,5 @@ public class FavoriteActivity extends AppCompatActivity {
             }
         });
     }
+
 }
