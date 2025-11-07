@@ -1,116 +1,53 @@
 package com.example.projekt_jo_eu;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.chip.ChipGroup;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import android.view.View;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    private RecyclerView recyclerView;
-    private MyAdapter adapter;
-    private List<String> itemList;
-    private SearchView searchView;
-    private ChipGroup sortingChipGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fooldal);
 
-        // --- Toolbar beállítása ---
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        Button orszagokBtn = findViewById(R.id.orszagok_btn);
+        Button favouriteBtn = findViewById(R.id.favourite_btn);
+        Button statistictBtn = findViewById(R.id.statistict_btn);
+        Button randomBtn = findViewById(R.id.random_btn);
 
-        // --- Adatok előkészítése ---
-        setupData();
-
-        // --- RecyclerView beállítása ---
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MyAdapter(itemList);
-        recyclerView.setAdapter(adapter);
-
-        // --- SearchView (szűrés) beállítása ---
-        searchView = findViewById(R.id.searchView);
-        setupSearchView();
-
-        // --- ChipGroup (rendezés) beállítása ---
-        sortingChipGroup = findViewById(R.id.sorting_chip_group);
-        setupSorting();
-    }
-
-    private void setupData() {
-        // Dummy adatok létrehozása a listához
-        itemList = new ArrayList<>();
-        itemList.add("Android");
-        itemList.add("Kotlin");
-        itemList.add("Java");
-        itemList.add("XML");
-        itemList.add("Fejlesztés");
-        itemList.add("ConstraintLayout");
-        itemList.add("RecyclerView");
-        itemList.add("Adapter");
-        itemList.add("Material Design");
-        itemList.add("Gradle");
-        itemList.add("ViewModel");
-        itemList.add("LiveData");
-    }
-
-    private void setupSearchView() {
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        orszagokBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                // Akkor hívódik meg, amikor a felhasználó a "keresés" gombra nyom
-                adapter.filter(query);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // Akkor hívódik meg, amikor a keresőmező tartalma megváltozik
-                adapter.filter(newText);
-                return true;
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CountriesActivity.class);
+                startActivity(intent);
             }
         });
-    }
 
-    private void setupSorting() {
-        sortingChipGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == R.id.sort_asc_chip) {
-                // Növekvő rendezés
-                sortList(true);
-            } else if (checkedId == R.id.sort_desc_chip) {
-                // Csökkenő rendezés
-                sortList(false);
+        favouriteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FavoriteActivity.class);
+                startActivity(intent);
             }
         });
-    }
 
-    private void sortList(boolean ascending) {
-        // A rendezést az adapter eredeti listáján végezzük
-        if (ascending) {
-            // Növekvő sorrend (A-Z)
-            Collections.sort(adapter.originalItems, Comparator.naturalOrder());
-        } else {
-            // Csökkenő sorrend (Z-A)
-            Collections.sort(adapter.originalItems, Comparator.reverseOrder());
-        }
+        statistictBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, StatisticsActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        // A szűrés újbóli alkalmazása a rendezett listára
-        // A searchView.getQuery() visszaadja az aktuális keresési kifejezést
-        String currentQuery = searchView.getQuery().toString();
-        adapter.filter(currentQuery);
+        randomBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RandomActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
-
