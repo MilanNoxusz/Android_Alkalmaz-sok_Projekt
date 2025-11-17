@@ -12,5 +12,11 @@
         android:label="Kezdőlap"
         tools:layout="@layout/fooldal" />
 
+    <fragment
+        android:id="@+id/randomFragment"
+        android:name="com.example.projekt_jo_eu.ui.randomFragment"
+        android:label="Random ország"
+        tools:layout="@layout/random_layout" />
+
 
 </navigation>
