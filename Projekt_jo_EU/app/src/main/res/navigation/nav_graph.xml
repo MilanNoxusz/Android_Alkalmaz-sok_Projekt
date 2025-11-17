@@ -18,5 +18,29 @@
         android:label="Random ország"
         tools:layout="@layout/random_layout" />
 
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.projekt_jo_eu.ui.favoriteFragment"
+        android:label="Kedvenc ország"
+        tools:layout="@layout/favorite"/>
+
+    <fragment
+        android:id="@+id/countryDetailFragment"
+        android:name="com.example.projekt_jo_eu.ui.countryDetailFragment"
+        android:label="Ország részletes információ"
+        tools:layout="@layout/country_detail_layout"/>
+
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="com.example.projekt_jo_eu.ui.statisticsFragment"
+        android:label="Országok statisztikája"
+        tools:layout="@layout/statistics_layout"/>
+
+    <fragment
+        android:id="@+id/visitedCountriesFragment"
+        android:name="com.example.projekt_jo_eu.ui.visitedCountriesFragment"
+        android:label="Meglátogatott országok"
+        tools:layout="@layout/visited_countries_layout"/>
+
 
 </navigation>

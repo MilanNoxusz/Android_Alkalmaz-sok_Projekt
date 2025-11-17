@@ -9,9 +9,23 @@ import android.view.ViewGroup;
 import com.example.projekt_jo_eu.R;
 
 public class randomFragment extends Fragment {
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
 
     public randomFragment() {
         // Required empty public constructor
+    }
+    public static randomFragment newInstance(String param1, String param2) {
+        randomFragment fragment = new randomFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
