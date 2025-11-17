@@ -10,8 +10,24 @@ import com.example.projekt_jo_eu.R;
 
 public class CountriesFragment extends Fragment {
 
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
     public CountriesFragment() {
         // Required empty public constructor
+    }
+
+    public static CountriesFragment newInstance(String param1, String param2) {
+        CountriesFragment fragment = new CountriesFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
