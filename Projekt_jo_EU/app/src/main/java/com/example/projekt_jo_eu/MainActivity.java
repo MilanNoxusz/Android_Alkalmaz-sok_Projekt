@@ -1,53 +1,76 @@
 package com.example.projekt_jo_eu;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.navigation.NavAction;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
+
+    private NavController navController;
+    private AppBarConfiguration appBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fooldal);
 
-        Button orszagokBtn = findViewById(R.id.orszagok_btn);
-        Button favouriteBtn = findViewById(R.id.favourite_btn);
-        Button statistictBtn = findViewById(R.id.statistict_btn);
-        Button randomBtn = findViewById(R.id.random_btn);
+        // Toolbar beállítása
+        Toolbar mainToolbar = findViewById(R.id.mainToolbar);
+        setSupportActionBar(mainToolbar);
 
-        orszagokBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CountriesActivity.class);
-                startActivity(intent);
-            }
-        });
+        // Címsor beállítása
+        setTitle("Navigation app");
 
-        favouriteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FavoriteActivity.class);
-                startActivity(intent);
-            }
-        });
+        // Navigation beállítása
+        NavHostFragment navHostFragment =
+                (NavHostFragment) getSupportFragmentManager()
+                        .findFragmentById(R.id.nav_host_fragment);
+        navController = navHostFragment.getNavController();
 
-        statistictBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, StatisticsActivity.class);
-                startActivity(intent);
-            }
-        });
+        // Top level destinations beállítása
+        appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.homeFragment
 
-        randomBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RandomActivity.class);
-                startActivity(intent);
-            }
-        });
+        ).build();
+
+        NavigationUI.setupActionBarWithNavController(this,
+                navController, appBarConfiguration);
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        /*if(item.getItemId() == R.id.homeFragment) {
+            showMessage("Kezdőlap");
+        } else if(item.getItemId() == R.id.profileFragment) {
+            showMessage("Profil");
+        } else if(item.getItemId() == R.id.settingsFragment) {
+            showMessage("Beállítások");
+        }
+
+        return super.onOptionsItemSelected(item);*/
+
+        return NavigationUI.onNavDestinationSelected(item, navController);
+    }
+
+    private void showMessage(String message) {
+        Toast.makeText(getApplicationContext(),
+                message,
+                Toast.LENGTH_SHORT).show();
     }
 }
