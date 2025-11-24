@@ -37,4 +37,13 @@ public class randomFragment extends Fragment {
 
         return view;
     }
+    @Override
+    public void onViewCreated(@androidx.annotation.NonNull android.view.View view, @androidx.annotation.Nullable android.os.Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        android.widget.Button backBtn = view.findViewById(R.id.back_button_random);
+        backBtn.setOnClickListener(v -> {
+            androidx.navigation.Navigation.findNavController(view).popBackStack();
+        });
+    }
 }
