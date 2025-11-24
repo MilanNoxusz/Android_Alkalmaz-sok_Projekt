@@ -8,25 +8,6 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
-
-
-    <Button
-        android:id="@+id/random_btn"
-        android:layout_width="98dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:background="#3F51B5"
-        android:fontFamily="sans-serif-light"
-        android:text="Random"
-        android:textAlignment="center"
-        android:textColor="#FDFCFC"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statistict_btn"
-        tools:ignore="MissingConstraints" />
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="0dp"
@@ -35,123 +16,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-        
 
-        <!-- Eszköztár (Toolbar) a fejlécen belül -->
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/mainToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
             app:title="Főoldal"
             app:titleCentered="true"
             app:titleTextColor="@color/white" />
-
     </com.google.android.material.appbar.AppBarLayout>
-
-
-
-    <TextView
-        android:id="@+id/fooldal"
-        android:layout_width="412dp"
-        android:layout_height="48dp"
-        android:background="#3F51B5"
-        android:fontFamily="sans-serif-light"
-        android:text="Főoldal"
-        android:textAlignment="center"
-        android:textColor="#FBFBFB"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/favourite_btn"
-        android:layout_width="98dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:background="#3F51B5"
-        android:fontFamily="sans-serif-light"
-        android:text="Kedvencek"
-        android:textAlignment="center"
-        android:textColor="#FDFCFC"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/orszagok_btn" />
-
-    <Button
-        android:id="@+id/statistict_btn"
-        android:layout_width="98dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:background="#3F51B5"
-        android:fontFamily="sans-serif-light"
-        android:text="Statisztika"
-        android:textAlignment="center"
-        android:textColor="#FDFCFC"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favourite_btn" />
-
-    <Button
-        android:id="@+id/orszagok_btn"
-        android:layout_width="98dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:background="#3F51B5"
-        android:fontFamily="sans-serif-light"
-        android:text="Országok"
-        android:textAlignment="center"
-        android:textColor="#FDFCFC"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/uzenet" />
-
-    <TextView
-        android:id="@+id/uzenet"
-        android:layout_width="214dp"
-        android:layout_height="97dp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="sans-serif-light"
-        android:text="Üdvözöljük az alkalmazásunkban!"
-        android:textAlignment="center"
-        android:textSize="22dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fooldal" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
-
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
+        app:layout_constraintTop_toBottomOf="@+id/appbar"
         app:navGraph="@navigation/nav_graph" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/mainToolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
