@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment"
-    >
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -12,6 +11,11 @@
         android:label="Kezdőlap"
         tools:layout="@layout/fooldal" />
 
+    <fragment
+        android:id="@+id/countriesFragment"
+        android:name="com.example.projekt_jo_eu.ui.countriesFragment"
+        android:label="Országok"
+        tools:layout="@layout/countries" />
     <fragment
         android:id="@+id/randomFragment"
         android:name="com.example.projekt_jo_eu.ui.randomFragment"
@@ -41,6 +45,5 @@
         android:name="com.example.projekt_jo_eu.ui.visitedCountriesFragment"
         android:label="Meglátogatott országok"
         tools:layout="@layout/visited_countries_layout"/>
-
 
 </navigation>

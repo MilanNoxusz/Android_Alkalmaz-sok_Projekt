@@ -63,4 +63,13 @@ public class countryDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.country_detail_layout, container, false);
     }
+    @Override
+    public void onViewCreated(@androidx.annotation.NonNull android.view.View view, @androidx.annotation.Nullable android.os.Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        android.widget.Button backBtn = view.findViewById(R.id.back_button_countriesdetail);
+        backBtn.setOnClickListener(v -> {
+            androidx.navigation.Navigation.findNavController(view).popBackStack();
+        });
+    }
 }
