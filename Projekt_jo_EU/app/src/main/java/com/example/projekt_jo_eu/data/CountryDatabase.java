@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Country.class}, version = 3, exportSchema = false)
+@Database(entities = {Country.class}, version = 4, exportSchema = false)
 public abstract class CountryDatabase extends RoomDatabase {
 
     public abstract CountryDao countryDao();
