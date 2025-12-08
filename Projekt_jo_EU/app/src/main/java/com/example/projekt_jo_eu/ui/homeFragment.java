@@ -3,6 +3,7 @@ package com.example.projekt_jo_eu.ui;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity; // Import hozzáadva
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -16,9 +17,8 @@ import com.example.projekt_jo_eu.R;
 public class homeFragment extends Fragment {
 
     public homeFragment() {
-
+        // Required empty public constructor
     }
-
 
     public static homeFragment newInstance(String param1, String param2) {
         homeFragment fragment = new homeFragment();
@@ -35,7 +35,7 @@ public class homeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -43,15 +43,12 @@ public class homeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         NavController navController = Navigation.findNavController(view);
-
 
         Button orszagokBtn = view.findViewById(R.id.orszagok_btn);
         Button favouriteBtn = view.findViewById(R.id.favourite_btn);
         Button statisticsBtn = view.findViewById(R.id.statistict_btn);
         Button randomBtn = view.findViewById(R.id.random_btn);
-
 
         // 1. Országok gomb -> CountriesFragment
         orszagokBtn.setOnClickListener(v -> {
@@ -72,5 +69,24 @@ public class homeFragment extends Fragment {
         randomBtn.setOnClickListener(v -> {
             navController.navigate(R.id.randomFragment);
         });
+    }
+
+    // Amikor a fragment láthatóvá válik (Kezdőlap), elrejtjük a felső sávot
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() != null && ((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        }
+    }
+
+    // Amikor elnavigálunk a fragmentről (pl. Stop), visszakapcsoljuk a sávot,
+    // hogy a többi oldalon (pl. Országok) látszódjon.
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (getActivity() != null && ((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+        }
     }
 }

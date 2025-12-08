@@ -20,7 +20,7 @@ import com.example.projekt_jo_eu.data.CountryDatabase;
 public class countriesFragment extends Fragment {
 
     public countriesFragment() {
-        // Required empty public constructor
+
     }
 
     public static countriesFragment newInstance(String param1, String param2) {
