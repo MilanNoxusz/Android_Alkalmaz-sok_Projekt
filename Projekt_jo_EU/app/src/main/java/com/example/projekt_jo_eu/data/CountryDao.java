@@ -1,5 +1,6 @@
 package com.example.projekt_jo_eu.data;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -21,11 +22,11 @@ public interface CountryDao {
 
 
     @Query("SELECT * FROM countries ORDER BY name ASC")
-    List<Country> getAllCountries();
+    LiveData<List<Country>> getAllCountries();
 
-
+    // Itt is érdemes átírni, ha dinamikus frissítést szeretnél a kedvenceknél
     @Query("SELECT * FROM countries WHERE isFavorite = 1 ORDER BY name ASC")
-    List<Country> getFavoriteCountries();
+    LiveData<List<Country>> getFavoriteCountries();
 
 
     @Query("SELECT * FROM countries WHERE name LIKE :searchQuery")

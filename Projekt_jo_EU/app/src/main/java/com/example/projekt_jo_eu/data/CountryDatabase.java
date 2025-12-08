@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Country.class}, version = 1, exportSchema = false)
+@Database(entities = {Country.class}, version = 3, exportSchema = false)
 public abstract class CountryDatabase extends RoomDatabase {
 
     public abstract CountryDao countryDao();
@@ -33,6 +33,7 @@ public abstract class CountryDatabase extends RoomDatabase {
                     // Itt átadjuk a context-et a callbacknek, hogy elérje a fájlt
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     CountryDatabase.class, "country_database")
+                            .fallbackToDestructiveMigration()
                             .addCallback(new RoomDatabaseCallback(context))
                             .build();
                 }
@@ -59,23 +60,29 @@ public abstract class CountryDatabase extends RoomDatabase {
                     InputStream inputStream = context.getAssets().open("countries_with_capitals_and_desc.sql");
                     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                     String line;
+                    int count = 0;
 
                     db.beginTransaction();
                     try {
                         while ((line = reader.readLine()) != null) {
-
+                            // Csak a nem üres és nem CREATE parancsokat futtatjuk
                             if (!line.trim().isEmpty() && !line.startsWith("CREATE")) {
-                                db.execSQL(line);
+                                try {
+                                    db.execSQL(line);
+                                    count++;
+                                } catch (Exception e) {
+                                    Log.e("Adatbazis", "Hiba ennél a sornál: " + line, e);
+                                }
                             }
                         }
                         db.setTransactionSuccessful();
-                        Log.d("Adatbazis", "Adatok sikeresen betoltve az SQL fajlbol!");
+                        Log.d("Adatbazis", "SIKER! " + count + " ország betöltve az adatbázisba.");
                     } finally {
                         db.endTransaction();
                         reader.close();
                     }
                 } catch (IOException e) {
-                    Log.e("Adatbazis", "Hiba az SQL fajl beolvasasakor", e);
+                    Log.e("Adatbazis", "Hiba az SQL fájl megnyitásakor!", e);
                 }
             });
         }

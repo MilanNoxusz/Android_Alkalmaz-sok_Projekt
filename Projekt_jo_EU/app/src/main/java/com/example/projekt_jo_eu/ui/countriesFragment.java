@@ -1,5 +1,6 @@
 package com.example.projekt_jo_eu.ui;
 
+
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,41 +43,40 @@ public class countriesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // 1. RecyclerView megkeresése a layoutban
         RecyclerView recyclerView = view.findViewById(R.id.countries_recyclerView);
-
-        // 2. LayoutManager beállítása (ez rendezi listába az elemeket)
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Vissza gomb kezelése
+        // Üres adapter beállítása kezdetben, hogy ne legyen üres a képernyő
+        MyAdapter adapter = new MyAdapter(new ArrayList<>());
+        recyclerView.setAdapter(adapter);
+
         android.widget.Button backBtn = view.findViewById(R.id.back_button_countries);
         backBtn.setOnClickListener(v -> {
             androidx.navigation.Navigation.findNavController(view).popBackStack();
         });
 
-        // 3. Adatbázis elérése és adatok betöltése
-        // Thread helyett a CountryDatabase-ben definiált ExecutorService-t használjuk
-        CountryDatabase.databaseWriteExecutor.execute(() -> {
+        // --- LIVEDATA MEGOLDÁS ---
 
-            CountryDatabase db = CountryDatabase.getDatabase(getContext());
+        // 1. Adatbázis példány
+        CountryDatabase db = CountryDatabase.getDatabase(getContext());
 
-            List<Country> countryList = db.countryDao().getAllCountries();
+        // 2. Feliratkozás a LiveData-ra
+        // A "getViewLifecycleOwner()" biztosítja, hogy csak akkor fusson, ha a nézet aktív
+        db.countryDao().getAllCountries().observe(getViewLifecycleOwner(), countryList -> {
 
-            List<String> countryNames = new ArrayList<>();
-            if (countryList != null) {
+            // Ez a kódblokk automatikusan lefut MINDEN alkalommal,
+            // amikor az adatbázisban változik valami (pl. betöltődnek az adatok).
+
+            if (countryList != null && !countryList.isEmpty()) {
+                List<String> countryNames = new ArrayList<>();
                 for (Country country : countryList) {
                     countryNames.add(country.getName());
                 }
-            }
 
-            // A UI frissítése továbbra is a fő szálon (UI thread) kell történjen
-            if (getActivity() != null) {
-                getActivity().runOnUiThread(() -> {
-                    // Adapter létrehozása a nevek listájával
-                    MyAdapter adapter = new MyAdapter(countryNames);
-                    // Adapter csatlakoztatása a RecyclerView-hoz
-                    recyclerView.setAdapter(adapter);
-                });
+                // Adapter frissítése az új adatokkal
+                // (Mivel a MyAdapter-ben nincs külön update metódus, újat hozunk létre)
+                MyAdapter newAdapter = new MyAdapter(countryNames);
+                recyclerView.setAdapter(newAdapter);
             }
         });
     }

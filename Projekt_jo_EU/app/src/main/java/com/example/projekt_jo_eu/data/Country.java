@@ -1,5 +1,6 @@
 package com.example.projekt_jo_eu.data;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -14,8 +15,8 @@ public class Country {
     public String description;
 
 
+    @ColumnInfo(defaultValue = "0")
     public boolean isFavorite;
-
 
     public Country(String name, String capital, String description) {
         this.name = name;
