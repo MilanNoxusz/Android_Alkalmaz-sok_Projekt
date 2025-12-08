@@ -3,6 +3,7 @@ package com.example.projekt_jo_eu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,14 +13,14 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-    // Most már Country objektumokat tárolunk String helyett
     public List<Country> originalItems;
     private List<Country> filteredItems;
     private final OnItemClickListener listener;
 
-    // Interfész a kattintás kezeléséhez
+    // Itt definiáljuk a két eseményt: sima kattintás és kedvenc kattintás
     public interface OnItemClickListener {
         void onItemClick(Country country);
+        void onFavoriteClick(Country country);
     }
 
     public MyAdapter(List<Country> items, OnItemClickListener listener) {
@@ -49,21 +50,42 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView countryName;
+        public ImageView favoriteIcon;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             countryName = itemView.findViewById(R.id.country_name_text);
+            // Fontos: a layout xml-ben ennek az ID-nak léteznie kell!
+            favoriteIcon = itemView.findViewById(R.id.favorite_icon);
         }
 
         public void bind(final Country country, final OnItemClickListener listener) {
             countryName.setText(country.getName());
 
-            // Kattintás esemény beállítása az elemre
+            // Ikon beállítása az aktuális állapot szerint
+            if (country.isFavorite()) {
+                favoriteIcon.setImageResource(R.drawable.ic_star);
+            } else {
+                favoriteIcon.setImageResource(R.drawable.ic_star_border);
+            }
+
+            // Teljes sorra kattintás (Részletek)
             itemView.setOnClickListener(v -> listener.onItemClick(country));
+
+            // Csak a csillagra kattintás (Kedvenc)
+            favoriteIcon.setOnClickListener(v -> {
+                // Azonnali vizuális visszajelzés
+                if (country.isFavorite()) {
+                    favoriteIcon.setImageResource(R.drawable.ic_star_border);
+                } else {
+                    favoriteIcon.setImageResource(R.drawable.ic_star);
+                }
+                listener.onFavoriteClick(country);
+            });
         }
     }
 
-    // Keresés funkció frissítése az új típushoz
+    // Kereső funkció
     public void filter(String query) {
         filteredItems.clear();
         if (query.isEmpty()) {

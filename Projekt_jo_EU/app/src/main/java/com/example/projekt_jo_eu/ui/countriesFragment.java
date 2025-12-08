@@ -14,9 +14,8 @@ import android.view.ViewGroup;
 
 import com.example.projekt_jo_eu.MyAdapter;
 import com.example.projekt_jo_eu.R;
+import com.example.projekt_jo_eu.data.Country;
 import com.example.projekt_jo_eu.data.CountryDatabase;
-
-import java.util.ArrayList;
 
 public class countriesFragment extends Fragment {
 
@@ -50,23 +49,34 @@ public class countriesFragment extends Fragment {
             androidx.navigation.Navigation.findNavController(view).popBackStack();
         });
 
-        // Adatbázis elérése és lista betöltése LiveData-val
+        // Adatbázis elérése
         CountryDatabase db = CountryDatabase.getDatabase(getContext());
 
+        // Lista figyelése
         db.countryDao().getAllCountries().observe(getViewLifecycleOwner(), countryList -> {
             if (countryList != null) {
-                // Adapter létrehozása a kattintás figyelővel
-                MyAdapter adapter = new MyAdapter(countryList, country -> {
-                    // KATTINTÁS KEZELÉSE:
-                    // 1. Megkeressük a NavController-t
-                    NavController navController = Navigation.findNavController(view);
+                // Adapter létrehozása a javított módszerrel
+                MyAdapter adapter = new MyAdapter(countryList, new MyAdapter.OnItemClickListener() {
 
-                    // 2. Csomagba (Bundle) tesszük az ID-t
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("countryId", country.getId());
+                    @Override
+                    public void onItemClick(Country country) {
+                        // Navigáció a részletekre
+                        NavController navController = Navigation.findNavController(view);
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("countryId", country.getId());
+                        navController.navigate(R.id.countryDetailFragment, bundle);
+                    }
 
-                    // 3. Átnavigálunk a részletes oldalra az adatokkal
-                    navController.navigate(R.id.countryDetailFragment, bundle);
+                    @Override
+                    public void onFavoriteClick(Country country) {
+                        // Kedvenc állapot mentése
+                        boolean newState = !country.isFavorite();
+                        country.setFavorite(newState);
+
+                        CountryDatabase.databaseWriteExecutor.execute(() -> {
+                            db.countryDao().update(country);
+                        });
+                    }
                 });
 
                 recyclerView.setAdapter(adapter);
