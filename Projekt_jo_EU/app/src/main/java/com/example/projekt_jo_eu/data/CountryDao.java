@@ -24,7 +24,7 @@ public interface CountryDao {
     @Query("SELECT * FROM countries ORDER BY name ASC")
     LiveData<List<Country>> getAllCountries();
 
-    // Itt is érdemes átírni, ha dinamikus frissítést szeretnél a kedvenceknél
+
     @Query("SELECT * FROM countries WHERE isFavorite = 1 ORDER BY name ASC")
     LiveData<List<Country>> getFavoriteCountries();
 
@@ -35,4 +35,6 @@ public interface CountryDao {
 
     @Query("SELECT * FROM countries WHERE id = :id")
     Country getCountryById(int id);
+    @Query("SELECT * FROM countries ORDER BY RANDOM() LIMIT 1")
+    Country getRandomCountry();
 }
