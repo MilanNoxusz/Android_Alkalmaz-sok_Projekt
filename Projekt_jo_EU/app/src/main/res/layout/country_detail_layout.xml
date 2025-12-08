@@ -9,29 +9,34 @@
     tools:layout_editor_absoluteX="-1dp"
     tools:layout_editor_absoluteY="72dp">
 
-    <ImageView
-        android:id="@+id/country_flag_detail_image"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="32dp"
+    <TextView
+        android:id="@+id/information_txtView2"
+        android:layout_width="414dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:background="#FCFCFD"
+        android:fontFamily="sans-serif-light"
+        android:text="Információ"
+        android:textAlignment="center"
+        android:textColor="#3F51B5"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information_txtView"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/country_name_detail_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/country_capital_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/country_flag_detail_image"
+        app:layout_constraintTop_toBottomOf="@+id/information_txtView2"
         tools:text="Ország Neve" />
 
     <TextView
@@ -78,17 +83,21 @@
 
     <TextView
         android:id="@+id/information_txtView"
-        android:layout_width="414dp"
-        android:layout_height="35dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="408dp"
+        android:layout_marginEnd="16dp"
         android:background="#FCFCFD"
         android:fontFamily="sans-serif-light"
         android:text="Információ"
-        android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="#3F51B5"
         android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/back_button_countriesdetail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
