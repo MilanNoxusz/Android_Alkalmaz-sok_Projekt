@@ -55,14 +55,12 @@ public class countriesFragment extends Fragment {
         });
 
         // 3. Adatbázis elérése és adatok betöltése
-        new Thread(() -> {
+        // Thread helyett a CountryDatabase-ben definiált ExecutorService-t használjuk
+        CountryDatabase.databaseWriteExecutor.execute(() -> {
 
             CountryDatabase db = CountryDatabase.getDatabase(getContext());
 
-
             List<Country> countryList = db.countryDao().getAllCountries();
-
-
 
             List<String> countryNames = new ArrayList<>();
             if (countryList != null) {
@@ -71,7 +69,7 @@ public class countriesFragment extends Fragment {
                 }
             }
 
-
+            // A UI frissítése továbbra is a fő szálon (UI thread) kell történjen
             if (getActivity() != null) {
                 getActivity().runOnUiThread(() -> {
                     // Adapter létrehozása a nevek listájával
@@ -80,6 +78,6 @@ public class countriesFragment extends Fragment {
                     recyclerView.setAdapter(adapter);
                 });
             }
-        }).start();
+        });
     }
 }
